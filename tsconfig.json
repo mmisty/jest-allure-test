@@ -20,6 +20,7 @@
   },
   "include": [
     "src/**/*",
-    "__tests__/**/*"
+    "__tests__/**/*",
+    "node_modules/jest-allure-mmisty/dist/setup.d.ts"
   ]
 }
