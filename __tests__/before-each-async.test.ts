@@ -1,22 +1,32 @@
-import {allureT, delay, log, wait} from '../src/test-helper';
-import {fail} from "assert";
+import { allure, allureT, delay } from '../src/test-helper';
+import { fail } from 'assert';
+import { ContentType } from 'allure-js-commons';
 
 describe('before-each-test', () => {
-  const beforeErr=[];
-  beforeEach(async () => {
-    log('before each 1');
-    await delay(100);
-    const err = new Error('Fail in before each');
-    beforeErr.push(err);
-    throw err;
-    log('before each 1 finished');
-  });
+  const beforeErr = [];
 
   beforeEach(async () => {
-    log('before each 2');
-    await wait(3000,() => beforeErr.length > 0);
-    fail('xxxx');
+    await allure.step('before each', async () => {
+      await delay(100);
+      const err = new Error('Fail in before each');
+      beforeErr.push(err);
+      allure.addAttachment('err', err.message, ContentType.TEXT);
+      throw err;
+    });
+
+    allure.addTestAttachment('Test', 'sdasda', ContentType.TEXT);
   });
+
+  // todo: adapter allure 2
+  // logging work:
+  // - errors and throws rework
+  // - add before each step and attachement
+
+  /* beforeEach(async () => {
+    log('before each 2');
+    await wait(() => beforeErr.length >1);
+    fail('xxxx');
+  });*/
 
   it('async test after before', async () => {
     await delay(10000, 'Message 1');

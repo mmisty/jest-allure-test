@@ -7,12 +7,13 @@
     "allowJs": true,
     "importHelpers": true,
     "jsx": "react",
+    "outDir": "dist",
     "alwaysStrict": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "noImplicitThis": false,
@@ -21,6 +22,6 @@
   "include": [
     "src/**/*",
     "__tests__/**/*",
-    "node_modules/jest-allure-mmisty/dist/setup.d.ts"
+    "node_modules/jest-allure2-adapter/dist/setup.d.ts"
   ]
 }
